@@ -4,6 +4,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
+// Function to generate random string
 function generateUniqueFileName() {
     const timestamp = new Date().toISOString().replace(/[-:]/g, '');
     const randomString = Math.random().toString(36).substring(2, 8);
