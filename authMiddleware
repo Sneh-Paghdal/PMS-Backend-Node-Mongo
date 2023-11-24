@@ -1,0 +1,21 @@
+const jwt = require('jsonwebtoken');
+const secretKey = 'HMAC SHA256';
+
+   exports.authenticateToken = async (req, res, next) => {
+    const headerToken = req.header('Authorization');
+    console.log(headerToken);
+    String? token = headerToken : any;
+    if(!headerToken.startsWith("Bearer")){
+      const breakerToken = headerToken.split(' ');
+      breakerToken[1];
+    }
+    console.log(token);
+    if (!token) return res.sendStatus(401);
+    jwt.verify(token, secretKey, (err, user) => {
+      if (err){
+        return res.sendStatus(403);
+      }
+      req.user = user;
+      next();
+    });
+  }
